@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local AI Research Assistant</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">R</div>
+      <div>
+        <h2>Research AI</h2>
+        <p>LOCAL WORKSPACE</p>
+      </div>
+    </div>
+
+    <button id="new-chat" class="new-chat">+ New Chat</button>
+
+    <div class="sidebar-section">
+      <p class="section-label">WORKSPACE</p>
+      <div class="nav-item active">⌂ &nbsp; Research Assistant</div>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="model-status">
+        <span class="status-dot"></span>
+        <div>
+          <strong>Local model</strong>
+          <p>Ollama connected locally</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
+      <div>
+        <h1>Research Assistant</h1>
+        <p>Ask questions. Explore information. Locally.</p>
+      </div>
+      <span class="privacy-label">● LOCAL & PRIVATE</span>
+    </header>
+
+    <section class="workspace">
+      <div class="source-panel">
+        <div class="source-heading">
+          <div>
+            <h2>Research source</h2>
+            <p>Upload a text file or load a public webpage.</p>
+          </div>
+          <span class="source-badge" id="source-badge">NO SOURCE</span>
+        </div>
+
+        <div class="source-controls">
+          <input type="file" id="source-file" accept=".txt,text/plain" />
+          <button id="upload-source" class="secondary-button">Load file</button>
+        </div>
+
+        <div class="url-controls">
+          <input
+            type="url"
+            id="source-url"
+            placeholder="https://example.com/article"
+            aria-label="Webpage URL"
+          />
+          <button id="load-url" class="secondary-button">Load URL</button>
+        </div>
+
+        <div class="source-footer">
+          <p id="source-status">No source loaded. You can still chat normally.</p>
+          <button id="clear-source" class="text-button" hidden>Clear source</button>
+        </div>
+      </div>
+
+      <section id="welcome" class="welcome">
+        <div class="welcome-icon">✳</div>
+        <p class="eyebrow">YOUR PERSONAL RESEARCH SPACE</p>
+        <h2>What would you like to research?</h2>
+        <p class="welcome-description">
+          Load a source to ask questions about its content, or start with a general question.
+        </p>
+
+        <div class="suggestions">
+          <button class="suggestion" data-prompt="Summarize the key points of the source.">
+            <span>↗</span>
+            <div>
+              <strong>Summarize a source</strong>
+              <p>Extract the most important information</p>
+            </div>
+          </button>
+          <button class="suggestion" data-prompt="What are the most important facts and findings?">
+            <span>⌕</span>
+            <div>
+              <strong>Find key facts</strong>
+              <p>Identify important details and findings</p>
+            </div>
+          </button>
+          <button class="suggestion" data-prompt="Explain the main concepts in simple terms.">
+            <span>◇</span>
+            <div>
+              <strong>Explain concepts</strong>
+              <p>Understand complex information</p>
+            </div>
+          </button>
+          <button class="suggestion" data-prompt="What questions remain unanswered by this source?">
+            <span>?</span>
+            <div>
+              <strong>Explore further</strong>
+              <p>Identify gaps and follow-up questions</p>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <section id="chat" class="chat" aria-live="polite"></section>
+
+      <form id="chat-form" class="chat-form">
+        <textarea
+          id="question"
+          rows="1"
+          placeholder="Ask a question..."
+          aria-label="Your question"
+        ></textarea>
+        <div class="input-footer">
+          <span id="status">Ready</span>
+          <span>Enter to send · Shift + Enter for new line</span>
+          <button type="submit" id="send-button" aria-label="Send message">↑</button>
+        </div>
+      </form>
+
+      <p class="disclaimer">Powered by Ollama · Your model runs on your machine</p>
+    </section>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>
